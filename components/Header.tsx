@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { Logo, LogoType, LogoMark, Avatar } from "../assets";
+import { Logo, LogoType, LogoMark, Avatar, Avatar2 } from "../assets";
 import {
   ChevronDownIcon,
   HomeIcon,
@@ -23,7 +23,7 @@ function Header() {
   return (
     <div className="flex sticky top-0 z-50  bg-white px-4 py-2">
       <div className="hidden sm:block relative h-10 w-20 flex-shrink-0 cursor-pointer">
-        <Image src={Logo} alt={""} className="object-contain" />
+        <Image src={Logo} alt={""} layout="fill" objectFit="contain" className="object-contain" />
       </div>
       <div className=" relative sm:hidden h-10 w-10 flex-shrink-0 cursor-pointer">
         <Image src={LogoMark} alt={""} className="object-contain" />
@@ -69,8 +69,8 @@ function Header() {
           }}
           className="lg:flex items-center border rounded-sm hover:border-gray-200 duration-500 border-gray-100 px-2 cursor-pointer space-x-2 hidden"
         >
-          <div className="relative h-5 w-5  flex-shrink-0 text-gray-500">
-            <Image src={Avatar} objectFit="contain" layout="fill" alt={""} className="object-contain" />
+          <div className="relative w-2/5 h-full flex-shrink-0 text-gray-500">
+            <Image src={Avatar2} objectFit="contain" layout="fill" alt={""} className="object-contain" />
           </div>
           <div className="flex-1 text-xs">
             <p className="truncate">{session?.user?.name}</p>
