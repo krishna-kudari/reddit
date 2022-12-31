@@ -16,10 +16,12 @@ import {
   PlusIcon,
   SpeakerphoneIcon,
 } from "@heroicons/react/outline";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 function Header() {
+  const { data: session, status } = useSession();
   return (
-    <div className="flex sticky top-0 z-50 bg-white px-4 py-4">
+    <div className="flex sticky top-0 z-50  bg-white px-4 py-2">
       <div className="hidden sm:block relative h-10 w-20 flex-shrink-0 cursor-pointer">
         <Image src={Logo} alt={""} className="object-contain" />
       </div>
@@ -55,17 +57,40 @@ function Header() {
         <SpeakerphoneIcon className="icon" />
       </div>
 
-      <div className="ml-5 items-center flex justify-center lg:hidden w-9 rounded-md  hover:bg-slate-300">
+      <div className="ml-5 items-center flex justify-center lg:hidden w-10 rounded-full duration-500 hover:border-1 hover:border-gray-300 hover:bg-slate-500">
         <MenuIcon className="icon" />
       </div>
 
       {/* Sign in Signout button */}
-      <div className="lg:flex items-center cursor-pointer space-x-2 hidden">
-        <div className="relative h-8 w-8 ml-5 flex items-center flex-shrink-0 justify-center rounded-full bg-gray-200 text-gray-500">
-          <Image src={Avatar} alt={""} className="object-contain" />
+      {session ? (
+        <div
+          onClick={() => {
+            signOut();
+          }}
+          className="lg:flex items-center border rounded-sm hover:border-gray-200 duration-500 border-gray-100 px-2 cursor-pointer space-x-2 hidden"
+        >
+          <div className="relative h-5 w-5  flex-shrink-0 text-gray-500">
+            <Image src={Avatar} objectFit="contain" layout="fill" alt={""} className="object-contain" />
+          </div>
+          <div className="flex-1 text-xs">
+            <p className="truncate">{session?.user?.name}</p>
+            <p className="text-gray-400 truncate">1 Karma</p>
+          </div>
+          <ChevronDownIcon className="h-5 w-5"/>
         </div>
-        <p className="text-gray-800">Sign in</p>
-      </div>
+      ) : (
+        <div
+          onClick={() => {
+            signIn();
+          }}
+          className="lg:flex items-center cursor-pointer space-x-2 hidden"
+        >
+          <div className=" h-8 w-8 ml-5 flex items-center flex-shrink-0 justify-center rounded-full bg-gray-200 text-gray-500">
+            <Image src={Avatar} alt={""} className="object-contain" />
+          </div>
+          <p className="text-gray-800">Sign in</p>
+        </div>
+      )}
     </div>
   );
 }
