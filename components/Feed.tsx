@@ -18,7 +18,7 @@ function Feed({ topic }: Props) {
   const posts: Post[] = !topic ? data?.getPostList : data?.getPostListByTopic;
   console.log(posts);
   return (
-    <div className="w-auto">
+    <div className="w-full">
       {posts?.map((post) => (
         <Post key={post.id} post={post} />
       ))}

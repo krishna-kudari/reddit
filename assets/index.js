@@ -8,3 +8,4 @@ export const tn1 = require('./thumbnail1.jpg');
 export const tn2 = require('./thumbnail2.jpg');
 export const tn3 = require('./thumbnail3.jpg');
 export const tn4 = require('./thumbnail4.jpg');
+export const reddit_banner = require('./reddit-banner.png')

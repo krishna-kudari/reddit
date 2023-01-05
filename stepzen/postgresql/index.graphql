@@ -75,6 +75,7 @@ type Query {
       type: "postgresql"
       query:""" 
         select * from "comment" where "post_id" = $1
+        order by "comment"."created_at" desc
       """
       configuration: "postgresql_config"
     )
@@ -171,6 +172,15 @@ type Query {
       """
       configuration: "postgresql_config"
     )
+  getSubredditListByLimit(limit: Int!): [Subreddit]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      query: """
+      SELECT * FROM "subreddit" order by "created_at" desc LIMIT $1 
+      """
+      configuration: "postgresql_config"
+    )
   " Queries for type 'Vote' "
   getVoteList: [Vote]
     @dbquery(
@@ -184,6 +194,7 @@ type Query {
       type: "postgresql"
       query: """ 
       select * from "vote" where "post_id" = $1
+      order by "vote"."created_at" desc
       """
       configuration: "postgresql_config"
     )
@@ -283,8 +294,7 @@ type Mutation {
     username: String!
     post_id: ID!
     id: ID!
-    created_at: DateTime!
-    upvote: Boolean!
+
   ): Vote
     @dbquery(
       type: "postgresql"
@@ -294,16 +304,29 @@ type Mutation {
       configuration: "postgresql_config"
     )
   insertVote(
-    username: String
-    post_id: ID
-    created_at: DateTime
-    upvote: Boolean
+    username: String!
+    post_id: ID!
+    upvote: Boolean!
   ): Vote
     @dbquery(
       type: "postgresql"
       schema: "public"
       table: "vote"
       dml: INSERT
+      configuration: "postgresql_config"
+    )
+  updateVote(
+    username: String!
+    post_id: ID!
+    upvote: Boolean!
+  ): Vote
+    @dbquery(
+      type: "postgresql"
+      query: """ 
+        update "vote"
+        set "vote"."upvote" = $3
+        where "vote"."post_id" =$2 AND "vote"."username" =$1
+      """
       configuration: "postgresql_config"
     )
 }

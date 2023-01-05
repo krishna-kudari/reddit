@@ -35,7 +35,9 @@ function Header() {
         </Link>
       </div>
       <div className=" relative sm:hidden h-10 w-10 flex-shrink-0 cursor-pointer">
+        <Link href={"/"}>
         <Image src={LogoMark} alt={""} className="object-contain" />
+        </Link> 
       </div>
 
       <div className="flex mx-7 items-center xl:min-w-[300px]">
