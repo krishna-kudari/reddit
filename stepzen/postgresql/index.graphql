@@ -293,14 +293,12 @@ type Mutation {
   deleteVote(
     username: String!
     post_id: ID!
-    id: ID!
-
   ): Vote
     @dbquery(
       type: "postgresql"
-      schema: "public"
-      table: "vote"
-      dml: DELETE
+      query: """
+      delete from "vote" where "vote"."post_id" = $2 and "vote"."username" = $1
+      """
       configuration: "postgresql_config"
     )
   insertVote(

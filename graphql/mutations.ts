@@ -100,3 +100,20 @@ export const UPDATE_VOTE = gql`
         }
     }
 `
+export const DELETE_VOTE =gql`
+    mutation MyQuery(
+        $post_id: ID!
+        $username: String!
+    ) {
+        deleteVote(
+            post_id: $post_id
+            username: $username
+        ) {
+            created_at
+            id
+            post_id
+            upvote
+            username
+        }
+    }
+`

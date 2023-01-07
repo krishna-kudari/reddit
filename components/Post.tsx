@@ -19,7 +19,8 @@ import { useSession } from "next-auth/react";
 import { toast } from "react-hot-toast";
 import { useMutation, useQuery } from "@apollo/client";
 import { GET_VOTES_BY_POST_ID } from "../graphql/queries";
-import { ADD_VOTE } from "../graphql/mutations";
+import { ADD_VOTE, DELETE_VOTE } from "../graphql/mutations";
+import { supabase } from "../supabaseClient";
 
 type Props = {
   post: Post;
@@ -28,6 +29,7 @@ type Props = {
 function Post({ post }: Props) {
   const { data: session } = useSession();
   const [vote, setVote] = useState<boolean>(true);
+  const [imageUrl, setImageUrl] = useState('');
 
   const { data, loading } = useQuery(GET_VOTES_BY_POST_ID, {
     variables: {
@@ -36,11 +38,22 @@ function Post({ post }: Props) {
   });
 
   // console.log(data);
-
+  async function downloadImage(path: string) {
+    try {
+      const { data, error } = await supabase.storage.from('images').download(path)
+      if (error) {
+        throw error
+      }
+      const url = URL.createObjectURL(data)
+      setImageUrl(url)
+    } catch (error) {
+      console.log('Error downloading image: ', error)
+    }
+  }
   const [addVote] = useMutation(ADD_VOTE, {
     refetchQueries: [GET_VOTES_BY_POST_ID, "getVoteListByPostId"],
   });
-
+  const [deleteVote] = useMutation(DELETE_VOTE);
   const upVote = async (isUpvote: boolean) => {
     console.log(vote);
 
@@ -53,6 +66,13 @@ function Post({ post }: Props) {
       return;
     }
     if (vote === false && !isUpvote) return;
+
+    const {data : {deleteVote: oldVote}} = await deleteVote({
+      variables:{
+        post_id: post.id,
+        username: session?.user?.name
+      }
+    })
 
     const {
       data: { insertVote: newVote },
@@ -75,8 +95,18 @@ function Post({ post }: Props) {
     // console.log(vote);
     // console.log(dbvote);
     setVote(dbvote as boolean);
+    if(post?.image)downloadImage(`${post?.image}`);
     // console.log(vote);
   }, [data]);
+
+  function cntvotes() {
+    let tot = 0;
+    post?.votes?.forEach(v => {
+      if(v.upvote)tot++;
+      else tot--;
+    });
+    return tot;
+  }
 
   if (!post)
     return (
@@ -94,7 +124,7 @@ function Post({ post }: Props) {
             vote ? "text-red-500" : "text-gray-400"
           }  rounded-md`}
         />
-        <p className="text-center font-bold">{post.votes.length}</p>
+        <p className="text-center font-bold">{cntvotes()}</p>
         <ArrowDownIcon
           onClick={() => upVote(false)}
           className={`h-8 p-1  border hover:text-blue-500 ${
@@ -122,15 +152,19 @@ function Post({ post }: Props) {
             <p className="text-gray-700 font-medium">{`${post.body}`} </p>
           </div>
           {/* Image */}
-          <div className="flex relative  w-full">
-            <Image
-            // height={}
-            // objectFit="contain"
-            src={reddit_banner}
-            // layout="fill"
-            alt={""}
-            className="object-cover h-[15rem]"
-          />
+          <div className="flex relative h-[15rem] justify-center overflow-y-scroll w-full">
+           {imageUrl && (
+            <img src={imageUrl} className="absolute"  alt="" placeholder="image" />
+            // <Image
+            //   objectFit="contain"
+            //   src={imageUrl}
+            //   layout="fill"
+            //   // width={500}
+            //   // height={600}
+            //   alt={""}
+            //   className="mx-auto"
+            // />
+           )} 
           </div>
         </Link>
         {/* Footer */}
