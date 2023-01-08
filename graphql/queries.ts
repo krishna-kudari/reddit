@@ -132,3 +132,35 @@ export const GET_POST_BY_POST_ID = gql`
         }
     }
 `
+export const GET_POSTS_BY_USERNAME = gql`
+    query MyQuery($username: String!) {
+        getPostListByUserName(username: $username) {
+            body
+            id
+            image
+            title
+            subreddit_id
+            username
+            comments {
+                created_at
+                id
+                post_id
+                text
+                username
+            }
+            created_at
+            subreddit {
+                created_at
+                id
+                topic
+            }
+            votes {
+                created_at
+                id
+                post_id
+                upvote
+                username
+            }
+        }
+    }
+`

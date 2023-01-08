@@ -116,7 +116,7 @@ function Post({ post }: Props) {
     );
 
   return (
-    <div className="flex drop-shadow-md w-auto rounded-lg  h-auto bg-white mt-5">
+    <div className="flex mx-auto drop-shadow-md w-auto rounded-lg  h-auto bg-white mt-5">
       <div className=" p-2 ">
         <ArrowUpIcon
           onClick={() => upVote(true)}
@@ -152,9 +152,9 @@ function Post({ post }: Props) {
             <p className="text-gray-700 font-medium">{`${post.body}`} </p>
           </div>
           {/* Image */}
-          <div className="flex relative h-[15rem] justify-center overflow-y-scroll w-full">
+          <div className="flex  justify-center  w-full">
            {imageUrl && (
-            <img src={imageUrl} className="absolute"  alt="" placeholder="image" />
+            <img src={imageUrl} className=""  alt="" placeholder="image" />
             // <Image
             //   objectFit="contain"
             //   src={imageUrl}

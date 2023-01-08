@@ -132,6 +132,16 @@ type Query {
       """
       configuration: "postgresql_config"
     )
+  getPostListByUserName(username: String!): [Post]
+    @dbquery(
+      type: "postgresql"
+      query: """
+        select * from "post" 
+        where "post"."username" = $1
+        order by "post"."created_at" desc
+      """
+      configuration: "postgresql_config"
+    )
   getPostPaginatedList(first: Int, after: Int): [Post]
     @dbquery(
       type: "postgresql"
