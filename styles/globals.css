@@ -7,3 +7,7 @@
         @apply h-8 w-6   lg:w-9  cursor-pointer lg:p-1 lg:hover:bg-gray-100
     }
 }
+
+#dropdown{
+    top: 3.75rem;
+}

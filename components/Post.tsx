@@ -114,8 +114,11 @@ function Post({ post }: Props) {
         <Jelly size={50} speed={0.6} color="#FF4501" />
       </div>
     );
-
+  if(post.image && !imageUrl){
+    return <div></div>
+  }
   return (
+    
     <div className="flex mx-auto drop-shadow-md w-auto rounded-lg  h-auto bg-white mt-5">
       <div className=" p-2 ">
         <ArrowUpIcon
@@ -193,6 +196,7 @@ function Post({ post }: Props) {
         </div>
       </div>
     </div>
+
   );
 }
 

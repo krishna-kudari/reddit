@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState , useEffect, useRef } from "react";
 import { Logo, LogoType, LogoMark, Avatar, Avatar2 } from "../assets";
 import {
   ChevronDownIcon,
@@ -23,8 +23,16 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 
 function Header() {
-  const { data: session, status } = useSession();
+  const [profilePic, setProfilePic] = useState("")
+  const { data: session, data } = useSession();
+  console.log(session?.user?.image);
+  useEffect(() => {
+    if(session?.user?.image)setProfilePic(session.user.image)
+  }, [session])
+  
   const [dropdopen, setDropdopen] = useState(false);
+  const toggle =() => setDropdopen(!dropdopen);
+
   return (
     <div className="shadow-sm  flex sticky top-0 z-50  bg-white px-4 py-2">
       <div className="hidden sm:block relative h-10 w-20 flex-shrink-0 cursor-pointer">
@@ -44,7 +52,7 @@ function Header() {
         </Link>
       </div>
 
-      <div className="flex mx-7 items-center xl:min-w-[300px]">
+      <div className="hidden md:flex mx-7 items-center xl:min-w-[300px]">
         <HomeIcon className="h-5 w-5" />
         <p className="hidden ml-2 flex-1 lg:inline">Home</p>
         <ChevronDownIcon className="h-5 w-5" />
@@ -85,25 +93,26 @@ function Header() {
           onClick={() => {
             setDropdopen(!dropdopen);
           }}
-          className="lg:flex items-center border rounded-sm hover:border-gray-200 duration-500 border-gray-100 px-2 cursor-pointer space-x-2 hidden"
+          className="flex items-center lg:border rounded-sm hover:border-gray-200 duration-500 border-gray-100 px-2 cursor-pointer space-x-2"
         >
           <div>
             {
-              dropdopen ? (<ChevronUpIcon className="flex-1 h-5 w-5"/>) : (<ChevronDownIcon className="flex-1 h-5 w-5" />)
+              dropdopen ? (<ChevronUpIcon className="hidden lg:block flex-1 h-5 w-5"/>) : (<ChevronDownIcon className="flex-1 hidden lg:block h-5 w-5" />)
             }
           </div>
-          <div className="relative w-3/12 h-full flex-shrink-0 text-gray-500">
+          <div className="relative w-[38px] h-[38px] overflow-hidden rounded-full flex-shrink-0 text-gray-500">
             <Image
-              src={Avatar2}
-              objectFit="contain"
+              src={profilePic}
+              objectFit="cover"
               layout="fill"
               // height={}
               // width={50}
               alt={""}
               className=""
             />
+            {/* <img src={profilePic} alt="" /> */}
           </div>
-          <div className="flex-1 text-xs">
+          <div className="hidden lg:block flex-1 text-xs">
             <p className="truncate">{session?.user?.name}</p>
             <p className="text-gray-400 truncate">1 Karma</p>
           </div>
@@ -113,7 +122,7 @@ function Header() {
           onClick={() => {
             signIn();
           }}
-          className="lg:flex items-center cursor-pointer space-x-2 hidden"
+          className="flex items-center cursor-pointer space-x-2"
         >
           <div className=" h-8 w-8 ml-5 flex items-center flex-shrink-0 justify-center rounded-full bg-gray-200 text-gray-500">
             <Image src={Avatar} alt={""} className="object-contain" />
@@ -123,7 +132,7 @@ function Header() {
       )}
 
       {dropdopen && (
-        <div className="top-12 flex lg:flex flex-col shadow-sm absolute min-w-[8rem] right-0 z-20 bg-white border-x rounded-b ">
+        <div  id="dropdown" onClick={()=>setDropdopen(false)} className="top-12 flex lg:flex flex-col shadow-sm absolute min-w-[8rem] right-3 z-20 bg-white border-x rounded-b ">
           <Link href={`/profile/${session?.user?.name}`}>
           <div className="flex space-x-2 p-2 items-center  cursor-pointer border-b">
             <BookmarkIcon className="h-5 w-5 flex-shrink-0" />

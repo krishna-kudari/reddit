@@ -1,14 +1,15 @@
 import Image from "next/image";
 import React from "react";
-import { Avatar2, reddit_banner } from "../assets";
+import { Avatar2, reddit_banner, tn1, tn10, tn11, tn12, tn13, tn2, tn3, tn4, tn5, tn6, tn7, tn8, tn9 } from "../assets";
 import { CakeIcon, SparklesIcon } from "@heroicons/react/solid";
 import { PlusIcon } from "@heroicons/react/outline";
+import TimeAgo from "react-timeago";
 function UserCard() {
   return (
-    <div className="overflow-hidden relative rounded m-auto max-w-sm bg-white ">
+    <div className="overflow-hidden relative rounded shadow shadow-white border border-white m-auto max-w-sm bg-white ">
       {/* //backgroud banner */}
-      <div className="h-24 w-full absolute top-0 left-0  bg-orange-500">
-        <Image objectFit="cover" fill src={reddit_banner} alt={""}/>
+      <div className="h-24 w-full absolute bg-gradient-to-tr bg-orange-500">
+        <Image objectFit="cover" fill src={tn1} alt={""}/>
       </div>
       {/* Profile image Avatar */}
       <div className="relative pt-5">
@@ -30,7 +31,7 @@ function UserCard() {
             <p className="">Cake Day</p>
             <div className="flex items-center">
                 <CakeIcon className="h-3 w-3 flex-shrink-0"/>
-                <span>{1}</span>
+                <TimeAgo date={Date()}/>
             </div>
         </div>
       </div>

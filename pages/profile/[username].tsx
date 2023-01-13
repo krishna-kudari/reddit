@@ -8,10 +8,12 @@ function Profile() {
   const username = router.query.username;
   return (
     <div className='flex'>
+      <div className='max-w-3xl mx-auto'>
         <Feed username={`${username}`}/>
-        <div className='hidden xl:block sticky top-20 h-fit w-2/5'>
-            <UserCard />
-        </div>
+      </div>
+      <div className='hidden xl:block sticky top-20 h-fit w-1/3'>
+          <UserCard />
+      </div>
     </div>
   )
 }

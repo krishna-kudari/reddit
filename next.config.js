@@ -2,13 +2,13 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    // remotePatterns:[
-    //   {protocol: 'https' ,
-    //     hostname: 'cdn.appleosophy.com',
-    //     port: '',
-    //     pathname: '/2019/06/reddit-banner.png/**'
-    //   }
-    // ]
+    remotePatterns:[
+      {protocol: 'https' ,
+        hostname: 'lh3.googleusercontent.com',
+        port: '',
+        pathname: '**'
+      }
+    ]
   },
   // webpack(config) {
   //   config.module.rules.push({
