@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useState , useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Logo, LogoType, LogoMark, Avatar, Avatar2 } from "../assets";
 import {
   ChevronDownIcon,
@@ -23,15 +23,15 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 
 function Header() {
-  const [profilePic, setProfilePic] = useState("")
+  const [profilePic, setProfilePic] = useState("");
   const { data: session, data } = useSession();
-  console.log(session?.user?.image);
+  // console.log(session);
   useEffect(() => {
-    if(session?.user?.image)setProfilePic(session.user.image)
-  }, [session])
-  
+    if (session?.user?.image) setProfilePic(session.user.image);
+  }, [session]);
+
   const [dropdopen, setDropdopen] = useState(false);
-  const toggle =() => setDropdopen(!dropdopen);
+  const toggle = () => setDropdopen(!dropdopen);
 
   return (
     <div className="shadow-sm  flex sticky top-0 z-50  bg-white px-4 py-2">
@@ -96,20 +96,34 @@ function Header() {
           className="flex items-center lg:border rounded-sm hover:border-gray-200 duration-500 border-gray-100 px-2 cursor-pointer space-x-2"
         >
           <div>
-            {
-              dropdopen ? (<ChevronUpIcon className="hidden lg:block flex-1 h-5 w-5"/>) : (<ChevronDownIcon className="flex-1 hidden lg:block h-5 w-5" />)
-            }
+            {dropdopen ? (
+              <ChevronUpIcon className="hidden lg:block flex-1 h-5 w-5" />
+            ) : (
+              <ChevronDownIcon className="flex-1 hidden lg:block h-5 w-5" />
+            )}
           </div>
           <div className="relative w-[38px] h-[38px] overflow-hidden rounded-full flex-shrink-0 text-gray-500">
-            <Image
-              src={profilePic}
-              objectFit="cover"
-              layout="fill"
-              // height={}
-              // width={50}
-              alt={""}
-              className=""
-            />
+            {profilePic ? (
+              <Image
+                src={profilePic}
+                objectFit="cover"
+                layout="fill"
+                // height={}
+                // width={50}
+                alt={""}
+                className=""
+              />
+            ) : (
+              <Image
+                src={Avatar2}
+                objectFit="cover"
+                layout="fill"
+                // height={}
+                // width={50}
+                alt={""}
+                className=""
+              />
+            )}
             {/* <img src={profilePic} alt="" /> */}
           </div>
           <div className="hidden lg:block flex-1 text-xs">
@@ -132,15 +146,22 @@ function Header() {
       )}
 
       {dropdopen && (
-        <div  id="dropdown" onClick={()=>setDropdopen(false)} className="top-12 flex lg:flex flex-col shadow-sm absolute min-w-[8rem] right-3 z-20 bg-white border-x rounded-b ">
+        <div
+          id="dropdown"
+          onClick={() => setDropdopen(false)}
+          className="top-12 flex lg:flex flex-col shadow-sm absolute min-w-[8rem] right-3 z-20 bg-white border-x rounded-b "
+        >
           <Link href={`/profile/${session?.user?.name}`}>
-          <div className="flex space-x-2 p-2 items-center  cursor-pointer border-b">
-            <BookmarkIcon className="h-5 w-5 flex-shrink-0" />
-            <p className="text-center">Profile</p>
-          </div>
+            <div className="flex space-x-2 p-2 items-center  cursor-pointer border-b">
+              <BookmarkIcon className="h-5 w-5 flex-shrink-0" />
+              <p className="text-center">Profile</p>
+            </div>
           </Link>
-          <div onClick={()=> signOut()} className=" flex space-x-2 p-2 items-center border-b cursor-pointer">
-            <LogoutIcon className="h-5 w-5 flex-shrink-0"/>
+          <div
+            onClick={() => signOut()}
+            className=" flex space-x-2 p-2 items-center border-b cursor-pointer"
+          >
+            <LogoutIcon className="h-5 w-5 flex-shrink-0" />
             <p className="text-center text-gray-600">logout</p>
           </div>
         </div>
