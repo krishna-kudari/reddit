@@ -12,6 +12,8 @@
     "@uiball/loaders": "^1.2.6",
     "axios": "^1.2.2",
     "dotenv-flow": "^3.2.0",
+    "fs": "^0.0.1-security",
+    "google-auth-library": "^8.7.0",
     "graphql": "^16.6.0",
     "jsonwebtoken": "^9.0.0",
     "next": "latest",

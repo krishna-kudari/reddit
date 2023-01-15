@@ -19,7 +19,7 @@ function Feed({ topic , username }: Props) {
         variables: { topic: topic },
       });
   const posts: Post[] = !topic ? !username ? data?.getPostList : data?.getPostListByUserName : data?.getPostListByTopic;
-  console.log(posts);
+  console.log("posts:",posts);
   return (
     <div className="w-full">
       {posts?.map((post) => (

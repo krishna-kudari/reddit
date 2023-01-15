@@ -2,13 +2,17 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { SessionProvider } from "next-auth/react";
 import Header from "../components/Header";
-import GoogleOneTapLogin from 'react-google-one-tap-login';
+import GoogleOneTapLogin from "react-google-one-tap-login";
 import { gql, ApolloProvider } from "@apollo/client";
 import client from "../apollo-client";
 import PostBox from "../components/PostBox";
 import { Toaster } from "react-hot-toast";
+import { createClient } from "@supabase/supabase-js";
+import { useState } from "react";
+// require('dotenv').config();
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+  
   return (
     <ApolloProvider client={client}>
       <SessionProvider session={session}>
