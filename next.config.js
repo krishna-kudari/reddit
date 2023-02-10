@@ -13,11 +13,11 @@ module.exports = {
         port: '',
         pathname: '**'
       },
-    //   {protocol: 'http' ,
-    //     hostname: '**',
-    //     port: '',
-    //     pathname: '**'
-    //   },
+      {protocol: 'https',
+        hostname: 'avatars.dicebear.com',
+        port: '',
+        pathname: '**'
+      },
     ]
   },
 }

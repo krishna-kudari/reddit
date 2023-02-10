@@ -1,6 +1,6 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
 import React, { useState, useEffect, useRef } from "react";
-import { Logo, LogoType, LogoMark, Avatar, Avatar2 } from "../assets";
+import { Logo, LogoType, LogoMark, Avatar, Avatar2 } from "../public/assets";
 import {
   ChevronDownIcon,
   HomeIcon,
@@ -46,7 +46,7 @@ function Header() {
           />
         </Link>
       </div>
-      <div className=" relative sm:hidden h-10 w-10 flex-shrink-0 cursor-pointer">
+      <div className="relative sm:hidden h-10 w-10 flex-shrink-0 cursor-pointer">
         <Link href={"/"}>
           <Image src={LogoMark} alt={""} className="object-contain" />
         </Link>

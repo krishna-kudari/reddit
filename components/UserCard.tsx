@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { Avatar2, reddit_banner, tn1, tn10, tn11, tn12, tn13, tn2, tn3, tn4, tn5, tn6, tn7, tn8, tn9 } from "../assets";
+import { Avatar2, reddit_banner, tn1, tn10, tn11, tn12, tn13, tn2, tn3, tn4, tn5, tn6, tn7, tn8, tn9 } from "../public/assets";
 import { CakeIcon, SparklesIcon } from "@heroicons/react/solid";
 import { PlusIcon } from "@heroicons/react/outline";
 import TimeAgo from "react-timeago";

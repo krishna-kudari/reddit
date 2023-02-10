@@ -10,7 +10,7 @@ import {
   SaveIcon,
   ShareIcon,
 } from "@heroicons/react/outline";
-import { Avatar2, reddit_banner, tn1, tn2, tn3, youbrokeit2 } from "../assets";
+import { Avatar2, reddit_banner, tn1, tn2, tn3, youbrokeit2 } from "../public/assets";
 import TimeAgo from "react-timeago";
 import Link from "next/link";
 
@@ -40,12 +40,8 @@ function Post({ post }: Props) {
   // console.log(data);
   async function downloadImage(path: string) {
     try {
-      const { data, error } = await supabase.storage.from('images').download(path)
-      if (error) {
-        throw error
-      }
-      const url = URL.createObjectURL(data)
-      setImageUrl(url)
+      const data = await supabase.storage.from('images').getPublicUrl(path)
+      setImageUrl(data.data.publicUrl);
     } catch (error) {
       console.log('Error downloading image: ', error)
     }

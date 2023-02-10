@@ -1,5 +1,5 @@
 import { useSession } from "next-auth/react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import React from "react";
 
 type Props = {
@@ -19,7 +19,7 @@ function Avatar({ seed, large }: Props) {
         src={`https://avatars.dicebear.com/api/open-peeps/${
           seed || session?.user?.name || "placeholder"
         }.svg`}
-        alt={""}
+        alt={"avatar"}
       />
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import { github, google, loginsideimage, LogoMark } from "../../assets";
+import { github, google, loginsideimage, LogoMark } from "../../public/assets";
 import { useSession, signIn, signOut, getCsrfToken } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
@@ -14,7 +14,7 @@ function login({ csrfToken } :{csrfToken:any}) {
   const { data: session } = useSession();
   const router = useRouter();
   if (session) {
-    router.replace("http://localhost:3000/");
+    router.replace(`${process.env.NEXTAUTH_URL}`);
   }
 
   const {
