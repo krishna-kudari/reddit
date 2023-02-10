@@ -1,4 +1,4 @@
-type Comment = {
+type Comments = {
   created_at: DateTime;
   id: !ID;
   post_id: ID;
@@ -14,7 +14,7 @@ type Post = {
   subreddit_id: ID;
   title: String;
   username: String;
-  comments: Comment[];
+  comments: Comments[];
   votes: Vote[];
   subreddit: Subreddit[];
 }

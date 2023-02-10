@@ -67,9 +67,6 @@ function PostPage() {
     }
   });
 
-  // console.log(post);
-  const comments = post?.comments;
-
   return (
     <div className="mx-auto my-7  max-w-5xl">
       <Post post={post} />
@@ -111,7 +108,7 @@ function PostPage() {
         <div className="rounded-b-md z-50 shadow-sm overflow-hidden relative -my-5 border-t-0 border-gray-300 bg-white py-5 pl-10">
           <hr className="py-2 w-full" />
 
-          {comments.map((comment : Comment) => (
+          {post.comments.map((comment : Comments) => (
 
             <div key={comment.id} className="relative flex items-center space-x-2 space-y-5">
             <hr className="h-16 absolute top-10 left-7  border-l border-gray-300"/>

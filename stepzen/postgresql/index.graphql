@@ -1,7 +1,7 @@
 """
-Table 'comment' aliased as GQLName: 'Comment'
+Table 'comment' aliased as GQLName: 'Comments'
 """
-type Comment {
+type Comments {
   created_at: DateTime
   id: ID!
   post_id: ID
@@ -20,7 +20,7 @@ type Post {
   subreddit_id: ID
   title: String
   username: String
-  comments: [Comment]
+  comments: [Comments]
   @materializer(
     query:"getCommentListByPostId",
     arguments:[{name:"post_id" , field:"id"}]
@@ -62,15 +62,15 @@ The following queries are just a set of examples of how to access your schema.
 Feel free to modify them or aggregate more.
 """
 type Query {
-  " Queries for type 'Comment' "
-  getCommentList: [Comment]
+  " Queries for type 'Comments' "
+  getCommentList: [Comments]
     @dbquery(
       type: "postgresql"
       schema: "public"
       table: "comment"
       configuration: "postgresql_config"
     )
-  getCommentListByPostId(post_id:ID!): [Comment]
+  getCommentListByPostId(post_id:ID!): [Comments]
     @dbquery(
       type: "postgresql"
       query:""" 
@@ -80,7 +80,7 @@ type Query {
       configuration: "postgresql_config"
     )
 
-  getCommentPaginatedList(first: Int, after: Int): [Comment]
+  getCommentPaginatedList(first: Int, after: Int): [Comments]
     @dbquery(
       type: "postgresql"
       schema: "public"
@@ -224,14 +224,14 @@ The following mutations are just a set of examples of how to access your schema.
 Feel free to modify them or aggregate more.
 """
 type Mutation {
-  " Mutations for type 'Comment' "
+  " Mutations for type 'Comments' "
   deleteComment(
     username: String!
     post_id: ID!
     text: String!
     id: ID!
     created_at: DateTime!
-  ): Comment
+  ): Comments
     @dbquery(
       type: "postgresql"
       schema: "public"
@@ -243,7 +243,7 @@ type Mutation {
     username: String!
     post_id: ID!
     text: String!
-  ): Comment
+  ): Comments
     @dbquery(
       type: "postgresql"
       schema: "public"
