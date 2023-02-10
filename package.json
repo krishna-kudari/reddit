@@ -25,8 +25,7 @@
     "react-hook-form": "^7.41.3",
     "react-hot-toast": "^2.4.0",
     "react-timeago": "^7.1.0",
-    "uid": "^2.0.1",
-    "v8": "^0.1.0"
+    "uid": "^2.0.1"
   },
   "devDependencies": {
     "@heroicons/react": "^1.0.6",
