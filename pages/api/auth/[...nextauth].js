@@ -163,8 +163,6 @@ export default nextAuth({
         return session
       }
     },
-    useSecureCookies: false
-    ,
     pages:{
       signIn: '/auth/login'
     },

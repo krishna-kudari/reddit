@@ -140,7 +140,7 @@ function login() {
                 </a>
                 <a
                   onClick={() =>
-                    signIn("github")
+                    signIn("github",{callbackUrl: "https://reddit-lime.vercel.app"})
                   }
                   className="px-7 py-3 text-[#373535] border border-[#373535] hover:bg-[#373535] hover:text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center mb-3"
                   // style={{backgroundColor: "#3b5998"}}
@@ -157,7 +157,7 @@ function login() {
                 </a>
                 <a
                   onClick={() =>
-                    signIn("google")
+                    signIn("google",{callbackUrl: "https://reddit-lime.vercel.app"})
                   }
                   className="px-7 py-3 border text-[#55acee] hover:bg-[#55acee] border-[#55acee] hover:text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center"
                   // style={{backgroundColor: "#55acee"}}
