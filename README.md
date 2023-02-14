@@ -7,16 +7,16 @@
 <h3 align="center">Reddit</h3>
 
   <p align="center">
-    An awesome Real Time Chat Apllication 🙋‍♂️👋⚡🔥💬🗨️Ⓜ️
+    An awesome blog application 😍✨⚡🔥❄️
     <br />
-    <a href="https://github.com/KRISHNAGK9964/reddit"><strong>Backend chatService»</strong></a>
+    <a href="https://github.com/KRISHNAGK9964/reddit/tree/main/stepzen"><strong>Backend stepzen»</strong></a>
     <br />
     <br />
     <a href="https://github.com/KRISHNAGK9964/reddit#usage">View Demo</a>
     ·
-    <a href="https://github.com/KRISHNAGK9964/iMessage/issues">Report Bug</a>
+    <a href="https://github.com/KRISHNAGK9964/reddit/issues">Report Bug</a>
     ·
-    <a href="https://github.com/KRISHNAGK9964/iMessage/issues">Request Feature</a>
+    <a href="https://github.com/KRISHNAGK9964/reddit/issues">Request Feature</a>
   </p>
 </div>
 
@@ -46,20 +46,22 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![product-screenshot](./public/demo/demo-2.png)
+![product-screenshot](./public/assets/product.png)
 
 ### Built With
 
 | Client | Server |
 |------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
 | [![Next.js shield][nextjs-shield]][nextjs-url]  | [![Node.js shield][nodejs-shield]][nodejs-url] |
-[![Chakra UI shield][chakra-shield]][chakra-url] | [![GraphQL shield][graphql-shield]][graphql-url] |
-[![Apollo Client shield][apollo-client-shield]][apollo-client-url] | [![Apollo Server shield][apollo-server-shield]][apollo-server-url] |
-[![GraphQL shield][graphql-shield]][graphql-url] | [![Prisma shield][prisma-shield]][prisma-url] |
-[![Prisma shield][prisma-shield]][prisma-url] | [![MongoDB shield][mongodb-shield]][mongodb-url] |
-[![MongoDB shield][mongodb-shield]][mongodb-url] | [![TypeScript shield][typescript-shield]][typescript-url] |
+[![Tailwind CSS shield][tailwind-css-shield]][tailwind-css-url] | [![GraphQL shield][graphql-shield]][graphql-url] |
+[![Apollo Client shield][apollo-client-shield]][apollo-client-url] | [![StepZen shield][stepzen-shield]][stepzen-url] |
+[![GraphQL shield][graphql-shield]][graphql-url] | [![Supabase shield][supabase-shield]][supabase-url] |
+[![StepZen shield][stepzen-shield]][stepzen-url] |  [![TypeScript shield][typescript-shield]][typescript-url]  |
+[![Supabase shield][supabase-shield]][supabase-url] |
 [![NextAuth shield][nextauth-shield]][nextauth-url] | 
 [![TypeScript shield][typescript-shield]][typescript-url]|
+
+
 
 
 
@@ -73,36 +75,35 @@
 To run the application on your local machine, follow these steps:
 
 - Clone or fork the repository from GitHub.
-- Clone or fork [backend]([chatServie]).
 - Install dependencies using npm install.
-- set up environmental variables to http://localhost:port and add mongodb credentials, nextauth credentials .
-- Start the backend server using npm run dev.
-- Start the frontend using npm run dev.
+- set up environmental variables to http://localhost:port and add stepzen credentials, nextauth providers credentials.
+- Start the application using npm run dev.
 - You will need to have Node.js installed on your local machine to run the application.
+- If you find any difficulties , please [contact](#contact) me.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
 🚀 Our application is currently deployed and available for use. To access the application, please follow the steps below:
 
-### 🌐 Go to [imessage].
+### 🌐 Go to [reddit-clone].
 
-### 🙋‍♀️ Signin with Google.🎟️🎫 If you do not have a username, create a 🕶️🔥 cool one.
+### 🙋‍♀️ Signin with Google-one-tap🔥⚡ , reddit ,google , and email.
 
-![signin](./public/demo/signin_username.png)
+![signin](./public/assets/auth.png)
 
-### 💬 you can start using the application by creating a new conversation, or messaging other users in the application.
+### 💬 you can start using the application by creating a new post, subreddit or posting in other subreddits.
 
-![create conversation](./public/demo/create-c.png)
+![create post](./public/assets/create-post.png)
 
-![chat](./public/demo/demo-convesation-unmarked.png)
-![chat](./public/demo/demo-conversation-marked.png)
+![subreddit-page](./public/assets/subreddit.png)
+![post-page](./public/assets/post.png)
 
-### delete conversation when you want.
+### like and comment on posts.
 
-![chat](./public/demo/demo-delete-conversation.png)
+![like-comment](./public/assets/like-comment.png)
 
-- 📧 If you have any issues or questions about the application, please reach out to me at [email].
+### 📧 If you have any issues or questions about the application, please reach out to me at [email].
 
 🎉 Thank you for using our application! We hope you enjoy your experience.
 <p align="right">(<a href="#readme">back to top</a>)</p>
@@ -113,27 +114,20 @@ To run the application on your local machine, follow these steps:
 
 - [x] authenticate users
     - [x] signin
-    - [x] costum username
+        - [x] google-one-tap
+        - [x] google
+        - [x] reddit
+        - [x] email
+        - [x] github
     - [x] logout
-- [ ] conversation
-    - [x] 🔍 by username
-    - [x] select multiple users
-    - [x] create conversation
-    - [ ] edit conversation
-        - [ ] leave conversation
-        - [x] delete conversation
-    - [x] conversation marked unread
-    - [x] latest message
- - [ ] chat 
-  - [x] send message
-  - [x] recieve message automatically
-  - [x] emoji support[press 🪟➕⚫ for emoji]
-  - [ ] GIF
-  - [ ] messsage status
-  - [ ] files sharing
-  - [ ] reply messages
+- [ ] post
+    - [x] image
+    - [x] subreddit pick/create
+    - [ ] reactions
+        - [x] like
+        - [x] comment
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/KRISHNAGK9964/reddit/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme">back to top</a>)</p>
 
@@ -164,7 +158,7 @@ Krishna -  [email](email)
 Project Links: 
 | frontend | backend |
 | -------- | ------- |
-|[https://github.com/KRISHNAGK9964/iMessage](imessage) | [https://github.com/KRISHNAGK9964/chatService](chatService)|
+|[https://github.com/KRISHNAGK9964/reddit](reddit) | [https://github.com/KRISHNAGK9964/reddit/tree/main/stepzen](backend)|
 
 <p align="right">(<a href="#readme">back to top</a>)</p>
 
@@ -174,11 +168,10 @@ Project Links:
 ## Acknowledgments
 
 * [Next-auth Documentation](https://next-auth.js.org/getting-started/introduction)
-* [Chakra UI Documentation](https://chakra-ui.com/docs/styled-system/style-props)
-* [Prisma Docs](https://www.prisma.io/docs)
-* [Apollo-client Docs](https://www.apollographql.com/docs/react)
-* [Apollo-server documentation](https://www.apollographql.com/docs/apollo-server)
-* [how to Graphql](https://www.howtographql.com/)
+* [tailwind Documentation](https://tailwindcss.com/docs/installation)
+* [stepzen documentation](https://stepzen.com/docs)
+* [supabase docs](https://supabase.com/docs)
+* [typescript cheatsheet](https://react-typescript-cheatsheet.netlify.app/docs/basic/setup)
 
 <p align="right">(<a href="#readme">back to top</a>)</p>
 
@@ -207,6 +200,10 @@ Project Links:
 [chatService]: https://github.com/KRISHNAGK9964/chatService
 [imessage]: https://imessage-inky.vercel.app/
 [email]: Kkrishna22572@gmail.com
+[reddit-clone]: https://reddit-lime.vercel.app/
+[reddit]: https://github.com/KRISHNAGK9964/reddit/
+[backend]: https://github.com/KRISHNAGK9964/reddit/tree/main/stepzen
+
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
 
@@ -233,6 +230,14 @@ Project Links:
 
 [nextauth-shield]: https://img.shields.io/badge/NextAuth-v4.4.0-black?style=for-the-badge&logo=next.js&logoColor=white&color=000000&labelColor=FFFFFF
 [nextauth-url]: https://next-auth.js.org/
+
+[tailwind-css-shield]: https://img.shields.io/badge/Tailwind_CSS-v3.0.7-pink?style=for-the-badge&logo=tailwind-css&logoColor=white&color=38B2AC&labelColor=000000
+[tailwind-css-url]: https://tailwindcss.com/
+[stepzen-shield]: https://img.shields.io/badge/StepZen-v0.12.5-pink?style=for-the-badge&logo=graphql&logoColor=white&color=311C87&labelColor=000000
+[stepzen-url]: https://stepzen.com/
+[supabase-shield]: https://img.shields.io/badge/Supabase-v1.41.0-pink?style=for-the-badge&logo=supabase&logoColor=white&color=1E40AF&labelColor=000000
+[supabase-url]: https://supabase.io/
+
 
 [graphql-shield]: https://img.shields.io/badge/GraphQL-v15.5.1-pink?style=for-the-badge&logo=graphql&logoColor=white&color=E434AA&labelColor=000000
 [graphql-url]: https://graphql.org/
